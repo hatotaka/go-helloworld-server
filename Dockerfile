@@ -1,4 +1,4 @@
-FROM busybox
+FROM ubuntu
 
 EXPOSE 8080
 
