@@ -15,7 +15,7 @@ build-linux:
 	GOOS=linux GOARCH=amd64 go build -o go-helloworld-server
 
 build-docker:
-	docker build -t $(IMAGE_NAME) .
+	sudo docker build -t $(IMAGE_NAME) .
 
 run:
 	docker run -d -p 8080:8080 $(IMAGE_NAME)
@@ -24,5 +24,5 @@ clean:
 	rm -f go-helloworld-server
 
 push:
-	docker push $(IMAGE_NAME)
+	sudo docker push $(IMAGE_NAME)
 
