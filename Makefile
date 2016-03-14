@@ -6,7 +6,7 @@ else
 IMAGE_NAME=$(DOCKER_USER)/hello-world
 endif
 
-all: build-linux build-docker
+all: build build-docker
 
 build:
 	go build -o go-helloworld-server
