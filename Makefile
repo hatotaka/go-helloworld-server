@@ -1,7 +1,10 @@
 DOCKER_USER?=$(shell whoami)
-DOCKER_REGISTRY?=docker.io
 
+ifdef DOCKER_REGISTRY
 IMAGE_NAME=$(DOCKER_REGISTRY)/${DOCKER_USER}/hello-world
+else
+IMAGE_NAME=${DOCKER_USER}/hello-world
+endif
 
 all: build-linux build-docker
 
@@ -22,3 +25,10 @@ clean:
 
 push:
 	docker push $(IMAGE_NAME)
+
+login:
+ifdef DOCKER_REGISTRY
+	docker login --email "${DOCKER_EMAIL}" --password "${DOCKER_PASSWORD}" --username "${DOCKER_USER}" "${DOCKER_REGISTRY}"
+else
+	docker login --email "${DOCKER_EMAIL}" --password "${DOCKER_PASSWORD}" --username "${DOCKER_USER}"
+endif
