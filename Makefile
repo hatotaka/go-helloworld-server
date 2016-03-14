@@ -26,9 +26,3 @@ clean:
 push:
 	docker push $(IMAGE_NAME)
 
-login:
-ifdef DOCKER_REGISTRY
-	docker login --email "${DOCKER_EMAIL}" --password "${DOCKER_PASSWORD}" --username "${DOCKER_USER}" "${DOCKER_REGISTRY}"
-else
-	docker login --email "${DOCKER_EMAIL}" --password "${DOCKER_PASSWORD}" --username "${DOCKER_USER}"
-endif
