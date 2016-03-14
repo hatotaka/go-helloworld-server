@@ -2,6 +2,6 @@ FROM busybox
 
 EXPOSE 8080
 
-ADD ./go-helloworld-server /go-helloworld-server
+ADD go-helloworld-server /bin/go-helloworld-server
 
-ENTRYPOINT /go-helloworld-server
+ENTRYPOINT /bin/go-helloworld-server
