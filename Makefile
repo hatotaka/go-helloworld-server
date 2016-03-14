@@ -1,5 +1,5 @@
 DOCKER_USER?=$(shell whoami)
-DOCKER_REGISTRY?=index.docker.io
+DOCKER_REGISTRY?=docker.io
 
 IMAGE_NAME=$(DOCKER_REGISTRY)/${DOCKER_USER}/hello-world
 
