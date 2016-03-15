@@ -11,7 +11,7 @@ var version = 4
 func handleHelloWorld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!<br>\n")
 	fmt.Fprintf(w, "Version=%d<br>\n", version)
-	fmt.Fprintf(w, "HELLOWORLD_ENV=%s<br>\n", os.Getenv("HELLOWORLD_ENV")
+	fmt.Fprintf(w, "HELLOWORLD_ENV=%s<br>\n", os.Getenv("HELLOWORLD_ENV"))
 
 }
 
