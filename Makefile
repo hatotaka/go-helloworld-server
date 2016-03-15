@@ -1,9 +1,9 @@
 DOCKER_USER?=$(shell whoami)
 
 ifdef DOCKER_REGISTRY
-IMAGE_NAME=$(DOCKER_REGISTRY)/$(DOCKER_USER)/hello-world
+IMAGE_NAME=$(DOCKER_REGISTRY)/$(DOCKER_USER)/helloworld-server
 else
-IMAGE_NAME=$(DOCKER_USER)/hello-world
+IMAGE_NAME=$(DOCKER_USER)/helloworld-server
 endif
 
 all: build-linux build-docker
