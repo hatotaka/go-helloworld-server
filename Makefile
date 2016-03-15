@@ -25,4 +25,8 @@ clean:
 
 push:
 	sudo docker push $(IMAGE_NAME)
+ifdef TRAVIS_COMMIT
+	sudo docker tag $(IMAGE_NAME) $(IMAGE_NAME):$(TRAVIS_COMMIT)
+	sudo docker push $(IMAGE_NAME):$(TRAVIS_COMMIT)
+endif
 
