@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var version = 9
+var version = 10
 
 func handleHelloWorld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!<br>\n")
