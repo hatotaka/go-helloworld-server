@@ -2,17 +2,35 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
+	"path/filepath"
 )
 
-var version = 12
+var version = 13
+var baseConfigmapVolume = "/etc/config"
 
 func handleHelloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World!<br>\n")
-	fmt.Fprintf(w, "Version=%d<br>\n", version)
-	fmt.Fprintf(w, "HELLOWORLD_ENV=%s<br>\n", os.Getenv("HELLOWORLD_ENV"))
+	fmt.Fprintf(w, "Hello, World!\n")
+	fmt.Fprintf(w, "Version=%d\n", version)
+	fmt.Fprintf(w, "env: HELLOWORLD_ENV=%s\n", os.Getenv("HELLOWORLD_ENV"))
+	fmt.Fprintf(w, "configmap: helloworld.env=%s", getConfigMapVal("helloworld.env"))
+}
 
+func getConfigMapVal(path string) string {
+	fullpath := filepath.Join(baseConfigmapVolume, path)
+
+	if filepath.HasPrefix(fullpath, baseConfigmapVolume) != false {
+		return ""
+	}
+
+	b, err := ioutil.ReadFile(fullpath)
+	if err != nil {
+		return ""
+	}
+
+	return string(b)
 }
 
 func handleEnv(w http.ResponseWriter, r *http.Request) {
