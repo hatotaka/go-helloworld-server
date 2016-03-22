@@ -8,14 +8,14 @@ import (
 	"path/filepath"
 )
 
-var version = 13
+var version = 14
 var baseConfigmapVolume = "/etc/config"
 
 func handleHelloWorld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello, World!\n")
 	fmt.Fprintf(w, "Version=%d\n", version)
 	fmt.Fprintf(w, "env: HELLOWORLD_ENV=%s\n", os.Getenv("HELLOWORLD_ENV"))
-	fmt.Fprintf(w, "configmap: helloworld.env=%s", getConfigMapVal("helloworld.env"))
+	fmt.Fprintf(w, "configmap: helloworld.env=%s\n", getConfigMapVal("helloworld.env"))
 }
 
 func getConfigMapVal(path string) string {
